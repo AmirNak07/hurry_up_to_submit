@@ -30,7 +30,7 @@ def sort_list(csv_file):
             day, month, year = list(
                 map(int, event[application_index].split()[0].split(".")))
             event_date = date(year, month, day)
-            if today == event_date - timedelta(days=7):
+            if today >= event_date - timedelta(days=7) and not event_date < today:
                 hurry_up.append(event)
         except (ValueError, IndexError):
             continue
@@ -58,7 +58,7 @@ def send_to_google(table_id, to_work_list, sorted_list):
 
 
 def main():
-    load_dotenv()
+    load_dotenv(override=True)
 
     # ID Электронной таблицы
     sheet_key = os.getenv("ID_TABLE")
