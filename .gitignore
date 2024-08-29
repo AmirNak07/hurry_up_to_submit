@@ -167,3 +167,5 @@ cython_debug/
 # For Project
 credentials.json
 result.csv
+
+.vscode
